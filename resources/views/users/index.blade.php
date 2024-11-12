@@ -1,56 +1,84 @@
 <x-app-layout>
 
-<section class="p-3 sm:p-5">
-    <div class="max-w-screen-xl px-4 mx-auto lg:px-12">
-        <!-- Start coding here -->
-        <div class="relative overflow-hidden bg-white shadow-md sm:rounded-lg">
-            <div class="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
-                <div class="w-full md:w-1/2">
-                    <form class="flex items-center">
-                        <label for="simple-search" class="sr-only">Search</label>
-                        <div class="relative w-full">
-                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <svg aria-hidden="true" class="w-5 h-5 text-white dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <input type="text" id="simple-search" class="block w-full p-2 pl-10 text-sm border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search" required="">
+            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="overflow-hidden shadow-sm bg-gray-70 sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    <div class="flex flex-col">
+                        <div class="overflow-x-auto ">
+                        <div class="inline-block min-w-full align-middle">
+                        <div class="flex justify-end">
+                            <a href="{{route('users.create')}}" class="flex justify-end ml-2 ">
+                                <x-primary-button>User</x-primary-button>
+                            </a>
+
+                            <a href="{{route('gov.create')}}" class="flex justify-end ml-2 ">
+                                <x-primary-button>government</x-primary-button>
+                            </a>
+
+                            <a href="{{route('ext.create')}}" class="flex justify-end ml-2 ">
+                                <x-primary-button>extension worker</x-primary-button>
+                            </a>
+
+                            <a href="{{route('buy.create')}}" class="flex justify-end ml-2 ">
+                                <x-primary-button>Buyer</x-primary-button>
+                            </a>
+
+                            <a href="{{route('sell.create')}}" class="flex justify-end ml-2 ">
+                                <x-primary-button>seller</x-primary-button>
+                            </a>
+                            <a href="{{route('bank.create')}}" class="flex justify-end ml-2 ">
+                                <x-primary-button>Bank</x-primary-button>
+                            </a>
+
+                            <a href="{{route('stake.create')}}" class="flex justify-end ml-2 ">
+                                <x-primary-button>Stakeholder</x-primary-button>
+                            </a>
+
                         </div>
-                    </form>
-                </div>
 
-            </div>
-            <div class="overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-900 uppercase bg-gray-50">
-                        <tr>
-                            <th scope="col" class="px-4 py-3">Farmer Name</th>
-                            <th scope="col" class="px-4 py-3">Email</th>
-                            <th scope="col" class="px-4 py-3">Farm Name </th>
-                            <th scope="col" class="px-4 py-3">Expertise</th>
-                            <th scope="col" class="px-4 py-3">Price</th>
-                            <th scope="col" class="px-4 py-3">
-                                <span class="">Actions</span>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($users as $user )
-                        <tr class="border-b dark:border-gray-700">
-                            <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">{{$user->name}}</th>
-                            <td class="px-4 py-3">{{$user->email}}</td>
-                            <td class="px-4 py-3">{{$user->email}}</td>
-                            <td class="px-4 py-3">{{$user->email}}</td>
-                            <td class="px-4 py-3">$2999</td>
-                            <td class="flex items-center justify-start px-4 py-3"><a class="text-color-green" href="">View</a>  | Delete</td>
-                        </tr>
+                            <div class="overflow-hidden rounded ">
+                                <table class="min-w-full p-2 mt-4 rounded-xl">
+                                    <thead>
+                                        <tr class="">
+                                            <th scope="col" class="p-2 text-sm font-semibold leading-6 text-left capitalize ">Name </th>
+                                            <th scope="col" class="p-2 text-sm font-semibold leading-6 text-left capitalize">Email</th>
+                                            <th scope="col" class="p-2 text-sm font-semibold leading-6 text-left capitalize "> Actions </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+                                        @foreach ($users as $user )
+                                        <tr class="transition-all duration-500 hover:bg-teal-300">
+                                            <td class="p-2 text-sm font-medium leading-6 whitespace-nowrap ">{{$user->name}}</td>
+                                            <td class="p-2 text-sm font-medium leading-6 whitespace-nowrap">{{$user->email}}  </td>
+                                            <td class="p-2 ">
+                                                <div class="flex items-center gap-1">
+                                                    {{-- <a href="{{route('users.edit',$user)}}"  class="flex p-2 text-green-700 transition-all duration-500 rounded-full group item-center">Edit</a> --}}
+                                                    <div class="flex p-2 text-red-400 transition-all duration-500 rounded-full group item-center">
+                                                        <form action="{{route('users.destroy',$user)}}" method="post" onsubmit=" return confirm ('Are you sure')" class="inline-block">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit">
+                                                                Delete
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                <div class="mt-4">
+                                    {{ $users->links() }}
+                                </div>
 
-                    </tbody>
-                    @endforeach
-                </table>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+
+                    </div>
             </div>
-            {{$users->links()}}
         </div>
     </div>
-    </section>
 </x-app-layout>

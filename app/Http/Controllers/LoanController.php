@@ -13,7 +13,8 @@ class LoanController extends Controller
      */
     public function index()
     {
-        //
+        $loans=Loan::paginate(6);
+        return view('loans.index',compact('loans'));
     }
 
     /**
@@ -29,10 +30,9 @@ class LoanController extends Controller
      */
     public function store(StoreLoanRequest $request)
     {
+        $request->user()->loans()->create($request->validated());
+        return redirect()->route('loans.index');
 
-        // dd($request->all());
-        ;
-        redirect('farms.index');
     }
 
     /**
@@ -40,7 +40,7 @@ class LoanController extends Controller
      */
     public function show(Loan $loan)
     {
-        //
+        return view('loans.show',compact('loan'));
     }
 
     /**
@@ -56,14 +56,17 @@ class LoanController extends Controller
      */
     public function update(UpdateLoanRequest $request, Loan $loan)
     {
-        //
+        $loan->update($request->validated());
+        return redirect()->route('loans.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
+
     public function destroy(Loan $loan)
     {
-        //
+        $loan->delete();
+        return redirect()->route('loans.index');
     }
 }

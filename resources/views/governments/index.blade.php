@@ -10,7 +10,10 @@
                                     <div class="overflow-x-auto ">
                                     <div class="inline-block min-w-full align-middle">
                                         <div class="overflow-hidden ">
+                                            @role('government')
                                             <x-primary-button><a href="{{route('governments.create')}}">Create Grant</a></x-primary-button>
+
+                                            @endrole
                                             <table class="min-w-full mt-4 rounded-xl">
                                                 <thead>
                                                     <tr class="bg-gray-50">
@@ -28,6 +31,7 @@
                                                         <td class="p-2 ">
                                                             <div class="flex items-center gap-1 ">
                                                                 <a href="{{route('governments.show',$gov)}}"  class="flex p-2 text-teal-600 transition-all duration-500 rounded-full group item-center hover:p-4">View</a>
+                                                                @role('government')
                                                                 <div class="flex p-2 transition-all duration-500 rounded-full group item-center hover:p-4">
                                                                     <form action="{{route('governments.destroy',$gov)}}" method="POST" class="inline-block">
                                                                         @csrf
@@ -35,6 +39,7 @@
                                                                         <button type="submit" class="text-red-700">Delete</button>
                                                                     </form>
                                                                 </div>
+                                                                @endrole
                                                             </div>
                                                         </td>
                                                     </tr>

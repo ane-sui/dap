@@ -22,8 +22,8 @@ class StoreLoanRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required',
-
+            'subject'=>'required|max:255',
+            'description'=>'required|string'
         ];
     }
 }

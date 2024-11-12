@@ -10,14 +10,16 @@
                                     <div class="overflow-x-auto ">
                                     <div class="inline-block min-w-full align-middle">
                                         <div class="overflow-hidden ">
-                                            <x-primary-button><a href="{{route('buyers.create')}}">Add Offer</a></x-primary-button>
+                                            @role('buyer')
+                                                <x-primary-button class="bg-teal-700"><a href="{{route('buyers.create')}}">Add Product</a></x-primary-button>
+                                            @endrole
                                             <table class="min-w-full mt-4 rounded-xl">
                                                 <thead>
                                                     <tr class="bg-gray-50">
-                                                        <th scope="col" class="p-5 text-sm font-semibold leading-6 text-left text-gray-900 capitalize rounded-t-xl"> Buyer's Name </th>
-                                                        <th scope="col" class="p-5 text-sm font-semibold leading-6 text-left text-gray-900 capitalize">Product Name </th>
-                                                        <th scope="col" class="p-5 text-sm font-semibold leading-6 text-left text-gray-900 capitalize">Price</th>
-                                                        <th scope="col" class="p-5 text-sm font-semibold leading-6 text-left text-gray-900 capitalize rounded-t-xl"> Actions</th>
+                                                        <th scope="col" class="text-sm font-semibold leading-6 text-left text-gray-900 capitalize rounded-t-xl"> Buyer's Name </th>
+                                                        <th scope="col" class="text-sm font-semibold leading-6 text-left text-gray-900 capitalize ">Product Name </th>
+                                                        <th scope="col" class="text-sm font-semibold leading-6 text-left text-gray-900 capitalize ">Price</th>
+                                                        <th scope="col" class="text-sm font-semibold leading-6 text-left text-gray-900 capitalize rounded-t-xl"> Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody class="divide-y divide-gray-300 ">
@@ -29,6 +31,7 @@
                                                         <td class="p-2 ">
                                                             <div class="flex items-center gap-1 ">
                                                                 <a href="{{route('buyers.show',$buyer)}}"  class="flex p-2 text-teal-600 transition-all duration-500 rounded-full group item-center hover:p-4">View</a>
+                                                            @role('buyer')
                                                                 <div class="flex p-2 transition-all duration-500 rounded-full group item-center hover:p-4">
                                                                     <form action="{{route('buyers.destroy',$buyer)}}" method="POST" class="inline-block">
                                                                         @csrf
@@ -36,6 +39,7 @@
                                                                         <button type="submit" class="text-red-700">Delete</button>
                                                                     </form>
                                                                 </div>
+                                                            @endrole
                                                             </div>
                                                         </td>
                                                     </tr>

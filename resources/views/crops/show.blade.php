@@ -1,4 +1,4 @@
-<x-app-layout>
+{{-- <x-app-layout>
     <form action="{{route('crops.update',$crop)}}" method="POST">
         @csrf
         @method('PUT')
@@ -8,4 +8,4 @@
         <input type="date" name="planting" value="{{$crop->planting}}">
         <button>Save</button>
     </form>
-</x-app-layout>
+</x-app-layout> --}}

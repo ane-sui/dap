@@ -12,41 +12,76 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
-                        {{ __('Farmers') }}
-                    </x-nav-link>
+                    @role('user')
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
 
-                    <x-nav-link :href="route('farm.create')" :active="request()->routeIs('farm.*')">
-                        {{ __('Add Farm') }}
-                    </x-nav-link>
+                        <x-nav-link :href="route('chat.index')" :active="request()->routeIs('chat.index')">
+                            {{ __('Chat') }}
+                        </x-nav-link>
+                    @endrole
 
-                    <x-nav-link :href="route('farm.create')" :active="request()->routeIs('farm.*')">
-                        {{ __('Add Farm') }}
-                    </x-nav-link>
 
-                    <x-nav-link :href="route('irrigations.create')" :active="request()->routeIs('irrigations.*')">
-                        {{ __('Irrigation') }}
-                    </x-nav-link>
+                    @role('admin')
+                        <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                            {{ __('Users') }}
+                        </x-nav-link>
+                    @endrole
 
-                    <x-nav-link :href="route('crops.index')" :active="request()->routeIs('crops.*')">
-                        {{ __('Crops') }}
-                    </x-nav-link>
+                    @role('user')
+                        <x-nav-link :href="route('farms.index')" :active="request()->routeIs('farms.*')">
+                            {{ __('Farms') }}
+                        </x-nav-link>
+                    @endrole
 
-                    <x-nav-link :href="route('suppliers.index')" :active="request()->routeIs('suppliers.*')">
-                        {{ __('Suppliers') }}
-                    </x-nav-link>
+                    @role('extensions')
+                        <x-nav-link :href="route('extensions.index')" :active="request()->routeIs('extensions.*')">
+                            {{ __('Messages') }}
+                        </x-nav-link>
+                    @endrole
 
-                    <x-nav-link :href="route('buyers.index')" :active="request()->routeIs('buyers.*')">
-                        {{ __('Buyer') }}
-                    </x-nav-link>
+                    @role('user')
+                        <x-nav-link :href="route('reply.index')" :active="request()->routeIs('reply.*')">
+                            {{ __('Inbox') }}
+                        </x-nav-link>
+                    @endrole
 
-                    <x-nav-link :href="route('governments.index')" :active="request()->routeIs('governments.*')">
-                        {{ __('Governments') }}
+                    @role('user|extension')
+                    <x-nav-link :href="route('blogs.index')" :active="request()->routeIs('blog.*')">
+                        {{ __('Blog') }}
                     </x-nav-link>
+                    @endrole
 
+                    @role('stakeholder')
+                        <x-nav-link :href="route('stakeholder.index')" :active="request()->routeIs('blog.*')">
+                            {{ __('Stakeholders') }}
+                        </x-nav-link>
+                    @endrole
+
+                    @role('bank|user')
+                        <x-nav-link :href="route('loans.index')" :active="request()->routeIs('loans.*')">
+                            {{ __('Loans') }}
+                        </x-nav-link>
+                    @endrole
+
+                    @role('supplier|user')
+                        <x-nav-link :href="route('suppliers.index')" :active="request()->routeIs('suppliers.*')">
+                            {{ __('Suppliers') }}
+                        </x-nav-link>
+                    @endrole
+
+                    @role('buyer|user')
+                        <x-nav-link :href="route('buyers.index')" :active="request()->routeIs('buyers.*')">
+                            {{ __('Buyer') }}
+                        </x-nav-link>
+                    @endrole
+
+                    @role('government|user')
+                        <x-nav-link :href="route('governments.index')" :active="request()->routeIs('governments.*')">
+                            {{ __('Governments') }}
+                        </x-nav-link>
+                    @endrole
                 </div>
             </div>
 

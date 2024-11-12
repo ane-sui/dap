@@ -24,6 +24,7 @@ class StoreSupplierRequest extends FormRequest
         return [
             'name'=>'string|required|max:255',
             'price'=>'required|numeric',
+            'quantity'=>'required'
         ];
     }
 }

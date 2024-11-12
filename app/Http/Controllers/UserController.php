@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -11,7 +12,8 @@ class UserController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {   $users=User::paginate(10);
+    {
+        $users=User::paginate(6);
         return view('users.index', compact('users'));
     }
 
@@ -20,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -28,7 +30,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        User::create($request->validate([
+            'name'=>['required'],
+            'email'=>['required','email',Rule::unique('users')],
+            'password'=>['required'],
+        ]));
+        return redirect()->route('users.index');
+
     }
 
     /**
@@ -52,7 +61,8 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->update($request->validated());
+        return redirect()->route('users.index');
     }
 
     /**
@@ -60,6 +70,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->back();
     }
 }

@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('name');
-            $table->double('price');
+            $table->string('quantity');
+            $table->double('price',8,2);
             $table->timestamps();
         });
     }

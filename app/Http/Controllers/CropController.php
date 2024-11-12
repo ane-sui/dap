@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Crop;
 use App\Http\Requests\StoreCropRequest;
 use App\Http\Requests\UpdateCropRequest;
+use App\Models\Farm;
+use Illuminate\Http\Request;
 
 class CropController extends Controller
 {
@@ -13,24 +15,35 @@ class CropController extends Controller
      */
     public function index()
     {
-        $crops=Crop::paginate(10);
+
+        $crops=Crop::all();
         return view('crops.index', compact('crops'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request )
     {
-        return view('crops.create');
+        $farm =Farm::find($request->farm_id);
+
+        return view('crops.create',compact('farm'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCropRequest $request)
+    public function store(Request $request)
     {
-        $request->user()->crops()->create($request->validated());
+        $crop=new Crop();
+        $crop->user_id=$request->user()->id;
+        $crop->name=$request->input('name');
+        $crop->seed_type=$request->input('seed_type');
+        $crop->quantity=$request->input('quantity');
+        $crop->planting=$request->input('planting');
+        $crop->farm_id=$request->input('farm_id');
+        $crop->save();
+
         return redirect()->route('crops.index');
     }
 

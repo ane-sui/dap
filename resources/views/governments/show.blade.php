@@ -18,13 +18,20 @@
 
                                     <div class="sm:col-span-2">
                                         <label for="description" class="block mb-2 text-sm font-medium">Description</label>
-                                        <textarea id="description" name="description" rows="8" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-primary-600 block w-full p-2.5  dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Your description here">{{$government->description}}"</textarea>
+                                        <textarea id="description" name="description" rows="30" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-600 focus:border-primary-600 block w-full p-2.5  dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Your description here">{{$government->description}}"</textarea>
                                         <x-input-error :messages="$errors->get('description')" class="mt-2" />
                                     </div>
                                 </div>
-                                <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-teal-700 rounded-lg focus:ring-4 focus:ring-teal-200 dark:focus:ring-primary-900 hover:bg-teal-800">
-                                    Update
-                                </button>
+                                @role('government')
+                                    <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-teal-700 rounded-lg focus:ring-4 focus:ring-teal-200 dark:focus:ring-primary-900 hover:bg-teal-800">
+                                        Update
+                                    </button>
+                                @endrole
+                                @role('user')
+                                    <a href="mailto:{{$government->user->email}}" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-teal-700 rounded-lg focus:ring-4 focus:ring-teal-200 dark:focus:ring-primary-900 hover:bg-teal-800">
+                                        Apply
+                                    </a>
+                                @endrole
                             </form>
                         </div>
                     </section>

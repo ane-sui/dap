@@ -26,6 +26,7 @@ class StoreCropRequest extends FormRequest
             'seed_type'=>'required|string|max:255',
             'quantity'=>'required|numeric',
             'planting'=>'required|max:255',
+            'farm_id' => 'string',
 
         ];
     }

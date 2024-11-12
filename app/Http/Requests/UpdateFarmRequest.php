@@ -11,7 +11,7 @@ class UpdateFarmRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class UpdateFarmRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name'=>'required|string|max:255',
+            'location'=>'required|string|max:255',
+            'size'=>'required|string|max:255',
+            'ownership'=>'required',
+            'land_type'=>'required|string|max:255',
+            'water_sources'=>'required|string|max:255',
+            'farming_practices'=>'required|string|max:255',
+            'employees'=>'required|string|max:255',
+            'establishment_date'=>'required|string|max:255',
         ];
     }
 }
