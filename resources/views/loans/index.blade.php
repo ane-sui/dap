@@ -10,10 +10,13 @@
                                     <div class="overflow-x-auto ">
                                     <div class="inline-block min-w-full align-middle">
                                         <div class="overflow-hidden ">
+
                                             @role('bank')
                                             <x-primary-button class="bg-teal-700"><a href="{{route('loans.create')}}">Create Loan Advert</a></x-primary-button>
                                             @endrole
                                             <table class="min-w-full mt-4 rounded-xl">
+
+                                            @include('sessions.success')
                                                 <thead>
                                                     <tr class="bg-gray-50">
                                                         <th scope="col" class="p-5 text-sm font-semibold leading-6 text-left text-gray-900 capitalize">Date </th>

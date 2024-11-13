@@ -33,7 +33,7 @@ class SupplierController extends Controller
     public function store(StoreSupplierRequest $request)
     {
         $request->user()->suppliers()->create($request->validated());
-        return redirect()->route('suppliers.index');
+        return redirect()->route('suppliers.index')->with('success','Product Listed Successfully');
     }
 
     /**
@@ -58,7 +58,7 @@ class SupplierController extends Controller
     public function update(UpdateSupplierRequest $request, Supplier $supplier)
     {
         $supplier->update($request->validated());
-        return redirect()->route('suppliers.index');
+        return redirect()->route('suppliers.index')->with('success','Product Details Updated Successfully');
     }
 
     /**
@@ -67,6 +67,6 @@ class SupplierController extends Controller
     public function destroy(Supplier $supplier)
     {
         $supplier->delete();
-       return redirect()->route('suppliers.index');
+       return redirect()->route('suppliers.index')->with('success','Product Removed from listing!');
     }
 }

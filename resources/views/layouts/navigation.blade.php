@@ -21,21 +21,18 @@
                             {{ __('Chat') }}
                         </x-nav-link>
                     @endrole
-
-
                     @role('admin')
                         <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                             {{ __('Users') }}
                         </x-nav-link>
                     @endrole
-
                     @role('user')
                         <x-nav-link :href="route('farms.index')" :active="request()->routeIs('farms.*')">
                             {{ __('Farms') }}
                         </x-nav-link>
                     @endrole
 
-                    @role('extensions')
+                    @role('extension')
                         <x-nav-link :href="route('extensions.index')" :active="request()->routeIs('extensions.*')">
                             {{ __('Messages') }}
                         </x-nav-link>
@@ -48,13 +45,13 @@
                     @endrole
 
                     @role('user|extension')
-                    <x-nav-link :href="route('blogs.index')" :active="request()->routeIs('blog.*')">
+                    <x-nav-link :href="route('blogs.index')" :active="request()->routeIs('blogs.*')">
                         {{ __('Blog') }}
                     </x-nav-link>
                     @endrole
 
                     @role('stakeholder')
-                        <x-nav-link :href="route('stakeholder.index')" :active="request()->routeIs('blog.*')">
+                        <x-nav-link :href="route('stakeholder.index')" :active="request()->routeIs('stakeholder.*')">
                             {{ __('Stakeholders') }}
                         </x-nav-link>
                     @endrole

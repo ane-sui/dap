@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Chat;
 use App\Http\Requests\StoreChatRequest;
 use App\Http\Requests\UpdateChatRequest;
+use App\Models\User;
 
 class ChatController extends Controller
 {
@@ -13,7 +14,7 @@ class ChatController extends Controller
      */
     public function index()
     {
-        $chats= Chat::paginate(6);
+        $chats= User::paginate(6);
         return view('chats.index',compact('chats'));
     }
 

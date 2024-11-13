@@ -21,6 +21,17 @@
                                         <input type="price" name="price" id="price" value="{{$supplier->price}}" class="bg-gray-50 border text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Product brand" required="">
                                         <x-input-error :messages="$errors->get('price')" class="mt-2" />
                                     </div>
+
+                                    <div class="w-full">
+                                        <label for="price" class="block mb-2 text-sm font-medium">Quantity</label>
+                                        <select name="quantity" id="quantity" class="bg-gray-50 border text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                            <option value="">{{$supplier->quantity  }}</option>
+                                            <option value="kgs">Kgs</option>
+                                            <option value="gramms">Grams</option>
+                                            <option value="tonnes">Tonnes</option>
+                                        </select>
+                                        <x-input-error :messages="$errors->get('quantity')" class="mt-2" />
+                                    </div>
                                 </div>
                                 <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-teal-700 rounded-lg focus:ring-4 focus:ring-teal-200 dark:focus:ring-primary-900 hover:bg-teal-800">
                                     Update

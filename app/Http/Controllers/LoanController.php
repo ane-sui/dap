@@ -31,7 +31,7 @@ class LoanController extends Controller
     public function store(StoreLoanRequest $request)
     {
         $request->user()->loans()->create($request->validated());
-        return redirect()->route('loans.index');
+        return redirect()->route('loans.index')->with('success', 'Loan has been listed!');
 
     }
 
@@ -57,7 +57,7 @@ class LoanController extends Controller
     public function update(UpdateLoanRequest $request, Loan $loan)
     {
         $loan->update($request->validated());
-        return redirect()->route('loans.index');
+        return redirect()->route('loans.index')->with('success','loan details updated');
     }
 
     /**
@@ -67,6 +67,6 @@ class LoanController extends Controller
     public function destroy(Loan $loan)
     {
         $loan->delete();
-        return redirect()->route('loans.index');
+        return redirect()->route('loans.index')->with('success','loan deleted');
     }
 }

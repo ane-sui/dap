@@ -13,6 +13,7 @@
                                             @role('buyer')
                                                 <x-primary-button class="bg-teal-700"><a href="{{route('buyers.create')}}">Add Product</a></x-primary-button>
                                             @endrole
+                                            @include('sessions.success')
                                             <table class="min-w-full mt-4 rounded-xl">
                                                 <thead>
                                                     <tr class="bg-gray-50">

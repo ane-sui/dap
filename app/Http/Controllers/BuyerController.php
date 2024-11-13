@@ -31,7 +31,7 @@ class BuyerController extends Controller
     public function store(StoreBuyerRequest $request)
     {
         $request->user()->buyers()->create($request->validated());
-        return redirect()->route('buyers.index');
+        return redirect()->route('buyers.index')->with('success', 'Product Listed');
     }
 
     /**
@@ -56,7 +56,7 @@ class BuyerController extends Controller
     public function update(UpdateBuyerRequest $request, Buyer $buyer)
     {
         $buyer->update($request->validated());
-        return redirect()->route('buyers.index');
+        return redirect()->route('buyers.index')->with('success','Product Updated');
     }
 
     /**
@@ -65,6 +65,6 @@ class BuyerController extends Controller
     public function destroy(Buyer $buyer)
     {
         $buyer->delete();
-        return redirect()->route('buyers.index');
+        return redirect()->route('buyers.index')->with('success','Product Deleted');
     }
 }

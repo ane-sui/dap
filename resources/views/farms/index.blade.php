@@ -6,13 +6,7 @@
                     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                         <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                             <div class="p-6 text-gray-900">
-
-                                @if (session('success'))
-                                    <div id="success-message" class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg" role="alert">
-                                        {{ session('success') }}
-                                    </div>
-                                @endif
-
+                                @include('sessions.success')
                                 <div class="flex flex-col">
                                     <div class="overflow-x-auto">
                                         <div class="inline-block min-w-full align-middle">
@@ -67,19 +61,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const successMessage = document.getElementById('success-message');
-            if (successMessage) {
-                setTimeout(() => {
-                    successMessage.style.transition = 'opacity 0.5s ease';
-                    successMessage.style.opacity = 0;
-                    setTimeout(() => {
-                        successMessage.remove();
-                    }, 500);
-                }, 2000);
-            }
-        });
-    </script>
 </x-app-layout>

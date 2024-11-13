@@ -25,6 +25,7 @@ class UpdateSupplierRequest extends FormRequest
             'name'=>'string|max:255',
             'price'=>'numeric',
             'quantity'=>'required',
+            
 
         ];
     }

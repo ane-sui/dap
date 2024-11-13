@@ -11,9 +11,9 @@
                                     <div class="inline-block min-w-full align-middle">
                                         <div class="overflow-hidden ">
                                             @role('government')
-                                            <x-primary-button><a href="{{route('governments.create')}}">Create Grant</a></x-primary-button>
-
+                                            <x-primary-button class="bg-teal-700"> <a href="{{route('governments.create')}}">Create Grant</a></x-primary-button>
                                             @endrole
+                                            @include('sessions.success')
                                             <table class="min-w-full mt-4 rounded-xl">
                                                 <thead>
                                                     <tr class="bg-gray-50">
@@ -25,7 +25,7 @@
                                                 <tbody class="divide-y divide-gray-300 ">
                                                     @foreach ($governments  as $gov)
                                                     <tr class="transition-all duration-500 bg-white hover:bg-gray-50">
-                                                        <td class="p-2 text-sm font-medium leading-6 text-gray-900 whitespace-nowrap ">{{$gov->created_at->format('D m Y')}}</td>
+                                                        <td class="p-2 text-sm font-medium leading-6 text-gray-900 whitespace-nowrap ">{{$gov->created_at->format('d-M-Y')}}</td>
                                                         <td class="p-2 text-sm font-medium leading-6 text-gray-900 whitespace-nowrap ">{{$gov->subject}}</td>
 
                                                         <td class="p-2 ">

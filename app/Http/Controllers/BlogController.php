@@ -32,7 +32,7 @@ class BlogController extends Controller
     public function store(StoreBlogRequest $request)
     {
         $request->user()->blogs()->create($request->validated());
-        return redirect()->route('blogs.index');
+        return redirect()->route('blogs.index')->with('success','Blog Post Created Successfully');
     }
 
     /**
@@ -50,8 +50,7 @@ class BlogController extends Controller
 
      public function edit(Blog $blog)
     {
-         return view('blogs.edit', compact('blog'));  
-        //  return view('blogs.show',compact('blog','comments')); 
+         return view('blogs.edit', compact('blog'));
     }
 
     /**
@@ -61,7 +60,7 @@ class BlogController extends Controller
     {
         $blog->update($request->validated());
 
-        return redirect()->route('blogs.index');
+        return redirect()->route('blogs.index')->with('success','Blog Post Updated Successfully');
     }
 
     /**
@@ -70,6 +69,6 @@ class BlogController extends Controller
     public function destroy(Blog $blog)
     {
         $blog->delete();
-        return redirect()->route('blogs.index');
+        return redirect()->route('blogs.index')->with('success','Blog Post Deleted!');
     }
 }

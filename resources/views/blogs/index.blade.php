@@ -14,7 +14,9 @@
                                              @role('extension')
                                                     <x-primary-button class="flex justify-end mb-3 bg-teal-700"><a class="" href="{{route('blogs.create')}}">Write</a></x-primary-button>
                                             @endrole
-                                                    <div class="grid gap-8 lg:grid-cols-2">
+                                            @include('sessions.success')
+                                              
+                                            <div class="grid gap-8 lg:grid-cols-2">
                                                         @foreach ($blogs  as $blog)
                                                         <article class="p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:border-teal -700">
                                                             <div class="flex items-center justify-between mb-5 text-gray-500">

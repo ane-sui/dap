@@ -1,4 +1,5 @@
 <x-app-layout>
+@role('user')
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
@@ -35,12 +36,24 @@
                     </div>
                 </div>
                 @endrole
-                <section style="background-image:url({{ asset('images/leaves.jpg') }}); background-iMAGE:cover" >
-                    {{-- What will be viewed by everyone else --}}
-                </section>
+
             </div>
         </div>
     </div>
+@endrole
+@role('admin|buyer|supplier|government|extension|bank|stakeholder')
+<div class="py-12">
+    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+            <section style="background-image:url({{ asset('images/logo.svg') }}); background-iMAGE:cover" >
+                <div class="w-full h-screen">
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+@endrole
 </x-app-layout>
 
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>

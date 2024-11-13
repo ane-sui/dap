@@ -32,7 +32,7 @@ class GovernmentController extends Controller
     public function store(StoreGovernmentRequest $request)
     {
         $request->user()->governments()->create($request->Validated());
-        return redirect()->route('governments.index');
+        return redirect()->route('governments.index')->with('success','Grant Listed Successfully');
     }
 
     /**
@@ -42,7 +42,7 @@ class GovernmentController extends Controller
     {
         return view('governments.show',compact('government'));
 
-        redirect()->route('governments.index');
+        // redirect()->route('governments.index');
     }
 
     /**
@@ -59,7 +59,7 @@ class GovernmentController extends Controller
     public function update(UpdateGovernmentRequest $request, Government $government)
     {
         $government->update($request->validated());
-        return redirect()->route('governments.index');
+        return redirect()->route('governments.index')->with('success','Grant Details Updated');
     }
 
     /**
@@ -68,6 +68,6 @@ class GovernmentController extends Controller
     public function destroy(Government $government)
     {
         $government->delete();
-        return redirect()->route('governments.index');
+        return redirect()->route('governments.index')->with('success','Grant removed!');
     }
 }
